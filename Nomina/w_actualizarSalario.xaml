@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nomina"
         mc:Ignorable="d"
-        Title="Actualizar Salario" Height="700" Width="500" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Actualizar Salario" Height="700" Width="500" WindowStartupLocation="CenterScreen">
     <Canvas>
         <GroupBox Header="Nuevo Monto" Canvas.Left="10" Canvas.Top="15" Height="308" Width="465">
             <Grid>
