@@ -18,6 +18,14 @@ namespace Nomina
     /// <summary>
     /// Lógica de interacción para Login.xaml
     /// </summary>
+    /// 
+    class Global
+    {
+        public static int UserID;
+        public static int EmpleadoID;
+
+    }
+
     public partial class Login : Window
     {
         NominaEntities nomina = new NominaEntities();
@@ -48,7 +56,9 @@ namespace Nomina
                 string password = txt_pass.Password;
                 var login = nomina.Usuario.Where(x => x.Usuario1 == usuario.Trim() && x.Password == password.Trim()).FirstOrDefault();
 
+
                 if (login!= null) {
+                    Global.UserID = login.Id_Usuario;
                     Menu menu = new Menu();
                     menu.Show();
                     this.Close(); 

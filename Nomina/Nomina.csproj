@@ -71,12 +71,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Empleado_Salario_Historico.cs">
+      <DependentUpon>NominaDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Liquidacion_Mensual.cs">
+      <DependentUpon>NominaDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Liquidacion_Mensual_Detalle.cs">
+      <DependentUpon>NominaDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="w_actualizarSalario.xaml.cs">
+      <DependentUpon>w_actualizarSalario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="w_Turno.xaml.cs">
       <DependentUpon>w_Turno.xaml</DependentUpon>
     </Compile>
     <Compile Include="w_Visor.xaml.cs">
       <DependentUpon>w_Visor.xaml</DependentUpon>
     </Compile>
+    <Page Include="w_actualizarSalario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="w_Conceptos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

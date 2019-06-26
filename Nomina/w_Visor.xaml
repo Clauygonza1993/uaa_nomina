@@ -5,17 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nomina"
         mc:Ignorable="d"
-        Title="Visor Reportes" Height="590.038" Width="488.158" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-    <Canvas Margin="0,0,2,102">
+        Title="Visor Reportes" Height="924.138" Width="1181.158" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Canvas Margin="0,0,115,102">
 
-        <GroupBox Header="Anticipos" Canvas.Left="10" Canvas.Top="10" Height="176" Width="465">
-            <DataGrid Name="dgAnticipo"></DataGrid>
+        <GroupBox Header="Anticipos" Canvas.Left="10" Canvas.Top="10" Height="259" Width="1152">
+            <DataGrid Name="dgAnticipo">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Aprobar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Aprobar" Name="btn_aprobar_anticipo" Click="btn_aprobar_anticipo_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Rechazar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Rechazar" Name="btn_rechazar_anticipo" Click="btn_rechazar_anticipo_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </GroupBox>
-        <GroupBox Header="Vacaciones" Canvas.Left="10" Canvas.Top="191" Height="176" Width="465">
-            <DataGrid Name="dgVacacion"></DataGrid>
+        <GroupBox Header="Vacaciones" Canvas.Left="10" Canvas.Top="274" Height="317" Width="1152">
+            <DataGrid Name="dgVacacion">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Aprobar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Aprobar" Name="btn_aprobar_vacaciones" Click="btn_aprobar_vacaciones_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Rechazar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Rechazar" Name="btn_rechazar_vacaciones" Click="btn_rechazar_vacaciones_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </GroupBox>
-        <GroupBox Header="Permisos" Canvas.Left="10" Canvas.Top="372" Height="176" Width="465">
-            <DataGrid Name="dgPermiso"></DataGrid>
+        <GroupBox Header="Permisos" Canvas.Left="10" Canvas.Top="607" Height="275" Width="1152">
+            <DataGrid Name="dgPermiso" Margin="0,0,0,-1" Width="1126">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Aprobar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Aprobar" Name="btn_aprobar" Click="btn_aprobar_permiso_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Rechazar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Rechazar" Name="btn_rechazar" Click="btn_rechazar_permiso_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </GroupBox>
     </Canvas>
 </Window>

@@ -18,6 +18,9 @@ namespace Nomina
     /// <summary>
     /// Lógica de interacción para w_Clientes.xaml
     /// </summary>
+    /// 
+    
+
     public partial class w_Empleado : Window
     {
         NominaEntities datos;
@@ -32,6 +35,9 @@ namespace Nomina
         {
             try
             {
+                cbo_Turno.ItemsSource = (from t in datos.Turno
+                                         select new { t.Id_Turno, t.Hora_Entrada, t.Hora_Salida, t.Observaciones }).ToList();
+                cbo_Turno.SelectedValuePath = "Id_Turno";
                 dgEmpleados.ItemsSource = datos.Empleado.ToList();
             }
             catch (Exception ex)
@@ -51,7 +57,7 @@ namespace Nomina
             if (dgEmpleados.SelectedItem != null)
             {
                 Empleado em = (Empleado)dgEmpleados.SelectedItem;
-
+                txtSalario.IsEnabled = false;
                 txtId.Text = em.Id_Empleado.ToString();
                 txtNombre.Text = em.Nombres;
                 txtApellidos.Text = em.Apellidos;
@@ -61,12 +67,13 @@ namespace Nomina
                 fechaNacimiento.SelectedDate = em.Fecha_Nacimiento;
                 fechaIncorporacion.SelectedDate = em.Fecha_Incorporacion;
                 txtSalario.Text = em.Salario_Basico.ToString();
+                cbo_Turno.SelectedValue = em.Turno_Id;
 
                 String stringPath = em.Imagen_Perfil;
                 Uri imageUri = new Uri(stringPath);
                 BitmapImage imageBitmap = new BitmapImage(imageUri);
                 imgPhoto.Source = imageBitmap;
-                
+
             }
         }
 
@@ -86,7 +93,8 @@ namespace Nomina
             fechaNacimiento.SelectedDate = null;
             fechaIncorporacion.SelectedDate = null;
             txtSalario.Text = string.Empty;
-           
+            cbo_Turno.SelectedValue = null;
+
             imgPhoto.Source = null;
         }
 
@@ -138,6 +146,7 @@ namespace Nomina
             {
                 Empleado em = (Empleado)dgEmpleados.SelectedItem;
 
+                em.Turno_Id = (int)cbo_Turno.SelectedValue;
                 em.Nombres = txtNombre.Text;
                 em.Apellidos = txtApellidos.Text;
                 em.Nro_Documento = txtDocumento.Text;
@@ -145,13 +154,13 @@ namespace Nomina
                 em.Nro_Telefono = txtTelefono.Text;
                 em.Fecha_Nacimiento = fechaNacimiento.SelectedDate.Value;
                 em.Fecha_Incorporacion = fechaIncorporacion.SelectedDate.Value;
-                em.Salario_Basico = int.Parse(txtSalario.Text);
+                //em.Salario_Basico = int.Parse(txtSalario.Text);
                 em.Imagen_Perfil = imgPhoto.Source.ToString();
 
                 datos.Entry(em).State = System.Data.Entity.EntityState.Modified;
                 datos.SaveChanges();
 
-               
+
                 CargarDatosGrilla();
             }
             else
@@ -162,6 +171,7 @@ namespace Nomina
         {
             Empleado em = new Empleado();
 
+            em.Turno_Id = (int)cbo_Turno.SelectedValue;
             em.Nombres = txtNombre.Text;
             em.Apellidos = txtApellidos.Text;
             em.Nro_Documento = txtDocumento.Text;
@@ -172,7 +182,17 @@ namespace Nomina
             em.Salario_Basico = int.Parse(txtSalario.Text);
             em.Imagen_Perfil = imgPhoto.Source.ToString();
 
-            datos.Empleado.Add(em);
+            
+
+
+            var d = datos.Empleado.Add(em);
+            Empleado_Salario_Historico eh = new Empleado_Salario_Historico();
+            eh.Empleado_Id = d.Id_Empleado;
+            eh.Fecha_Hora = DateTime.Now;
+            eh.Salario_Basico_Nuevo = int.Parse(txtSalario.Text);
+            eh.Usuario_Id = Global.UserID;
+            datos.Empleado_Salario_Historico.Add(eh);
+
             datos.SaveChanges();
             CargarDatosGrilla();
         }
@@ -189,5 +209,23 @@ namespace Nomina
                 imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
             }
         }
+
+        private void btn_modificar_salario_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgEmpleados.SelectedItem != null)
+            {
+                Empleado em = (Empleado)dgEmpleados.SelectedItem;
+                Global.EmpleadoID = int.Parse(em.Id_Empleado.ToString());
+                w_actualizarSalario salario = new w_actualizarSalario();
+                salario.Show();
+        
+            }
+            else
+                MessageBox.Show("Debe seleccionar un Empleado de la grilla para modificar!");
+        }
     }
 }
+
+
+
+           
