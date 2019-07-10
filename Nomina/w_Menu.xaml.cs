@@ -53,5 +53,17 @@ namespace Nomina
         {
             Application.Current.Shutdown();
         }
+
+        private void MenuLiquidaciones_Click(object sender, RoutedEventArgs e)
+        {
+            w_GenerarLiquidaciones ventanaLiquidacion = new w_GenerarLiquidaciones();
+            ventanaLiquidacion.ShowDialog();
+        }
+
+        private void MenuLiquidacionesGeneradas_Click(object sender, RoutedEventArgs e)
+        {
+            w_Generados ventanaGenerados = new w_Generados();
+            ventanaGenerados.ShowDialog();
+        }
     }
 }

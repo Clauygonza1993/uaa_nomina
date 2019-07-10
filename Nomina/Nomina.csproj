@@ -83,8 +83,17 @@
     <Compile Include="w_actualizarSalario.xaml.cs">
       <DependentUpon>w_actualizarSalario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="w_GenerarLiquidacionesDetalle.xaml.cs">
+      <DependentUpon>w_GenerarLiquidacionesDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="w_GenerarLiquidaciones.xaml.cs">
+      <DependentUpon>w_GenerarLiquidaciones.xaml</DependentUpon>
+    </Compile>
     <Compile Include="w_Turno.xaml.cs">
       <DependentUpon>w_Turno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="w_Generados.xaml.cs">
+      <DependentUpon>w_Generados.xaml</DependentUpon>
     </Compile>
     <Compile Include="w_Visor.xaml.cs">
       <DependentUpon>w_Visor.xaml</DependentUpon>
@@ -98,6 +107,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="w_Empleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="w_GenerarLiquidacionesDetalle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="w_GenerarLiquidaciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,6 +179,10 @@
     <Page Include="w_Turno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="w_Generados.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="w_Visor.xaml">
       <SubType>Designer</SubType>

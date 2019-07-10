@@ -1,0 +1,53 @@
+﻿<Window x:Class="Nomina.w_GenerarLiquidaciones"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nomina"
+        mc:Ignorable="d"
+        Title="Generar Liquidaciones" Height="356.78" Width="498.093" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Canvas Margin="0,0,11,180">
+        <GroupBox Header="Seleccione mes/año" Canvas.Top="10" Height="300" Width="473" Canvas.Left="6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Mes" HorizontalAlignment="Right" Margin="0,0,93,98" RenderTransformOrigin="-0.961,2.347"></Label>
+                <Label Grid.Column="0" Content="Año" HorizontalAlignment="Right" Margin="0,51,67,51" RenderTransformOrigin="-1.945,0.063" Width="58"/>
+
+                <ComboBox Grid.Column="1" Name="cbo_mes" Margin="23,0,28,90" SelectedValuePath="Tag" Height="34">
+                    <ComboBoxItem Content="Enero" Tag="1" />
+                    <ComboBoxItem Content="Febrero" Tag="2"/>
+                    <ComboBoxItem Content="Marzo" Tag="3"/>
+                    <ComboBoxItem Content="Abril" Tag="4"/>
+                    <ComboBoxItem Content="Mayo" Tag="5"/>
+                    <ComboBoxItem Content="Junio" Tag="6"/>
+                    <ComboBoxItem Content="Julio" Tag="7"/>
+                    <ComboBoxItem Content="Agosto" Tag="8"/>
+                    <ComboBoxItem Content="Septiembre" Tag="9"/>
+                    <ComboBoxItem Content="Octubre" Tag="10"/>
+                    <ComboBoxItem Content="Noviembre" Tag="11"/>
+                    <ComboBoxItem Content="Diciembre" Tag="12"/>
+                </ComboBox>
+                <ComboBox Grid.Column="1" Name="cbo_anho" Width="172" HorizontalAlignment="Center"  SelectedValuePath="Tag" Height="29" Margin="23,51,28,48">
+                    <ComboBoxItem Content="2016" Tag="2016" />
+                    <ComboBoxItem Content="2017" Tag="2017"/>
+                    <ComboBoxItem Content="2018" Tag="2018"/>
+                    <ComboBoxItem Content="2019" Tag="2019"/>
+                </ComboBox>
+
+
+                <Button   Content="Generar Liquidación" Height="25" HorizontalAlignment="Stretch" Name="btn_procesar" Click="btn_procesar_Click" Grid.ColumnSpan="2" Margin="121,99,106,0"/>
+
+
+            </Grid>
+        </GroupBox>
+
+
+    </Canvas>
+</Window>

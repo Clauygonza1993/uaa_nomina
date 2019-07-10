@@ -1,0 +1,32 @@
+﻿<Window x:Class="Nomina.w_Generados"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nomina"
+        mc:Ignorable="d"
+        Title="Visor Reportes" Height="319.789" Width="1186.578" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Canvas Margin="0,0,115,102">
+
+        <GroupBox Header="Liquidaciones Abiertas" Canvas.Left="10" Canvas.Top="10" Height="259" Width="1152">
+            <DataGrid Name="dgLiquidaciones">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Generar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Generar" Name="btn_generar" Click="btn_generar_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Detalles">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Cargar Detalle" Name="btn_detalles" Click="btn_detalles_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Canvas>
+</Window>

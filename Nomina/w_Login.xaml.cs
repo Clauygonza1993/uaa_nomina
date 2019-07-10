@@ -23,6 +23,7 @@ namespace Nomina
     {
         public static int UserID;
         public static int EmpleadoID;
+        public static int LiquidacionID;
 
     }
 

@@ -1,0 +1,80 @@
+﻿<Window x:Class="Nomina.w_GenerarLiquidacionesDetalle"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nomina"
+        mc:Ignorable="d"
+        Title="Cargar Detalles" Height="620.442" Width="802.56" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Canvas Margin="0,0,11,261">
+        <GroupBox Header="Cargar nuevo detalle" Canvas.Top="10" Height="300" Width="473" Canvas.Left="139">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Empleado" HorizontalAlignment="Right" Margin="0,0,80,98" RenderTransformOrigin="-0.961,2.347" Width="76"></Label>
+                <Label Grid.Column="0" Content="Monto" HorizontalAlignment="Right" Margin="0,49,94,44" RenderTransformOrigin="-1.945,0.063" Width="45"/>
+                <Label Grid.Column="0" Content="Operación" HorizontalAlignment="Right" Margin="0,85,34,0" RenderTransformOrigin="-1.945,0.063" Width="122" Height="39" VerticalAlignment="Top"/>
+                <Label Grid.Column="0" Content="Motivo" HorizontalAlignment="Right" Margin="0,10,17,0" RenderTransformOrigin="-1.945,0.063" Width="122" Height="39" VerticalAlignment="Top" Grid.Row="1"/>
+
+                <ComboBox Grid.Column="1" Name="cbo_empleados" Margin="23,0,28,90" SelectedValuePath="Tag" Height="34">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}">
+                                        <Binding Path="Nombres"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox Name="txtMonto" Grid.Column="1" Margin="23,49,28,53"/>
+                <ComboBox Grid.Column="1" Name="cbo_tipo" Margin="23,90,28,0" SelectedValuePath="Tag" Height="34">
+                    <ComboBoxItem Content="Suma" Tag="1" />
+                    <ComboBoxItem Content="Resta" Tag="-1" Margin="2,0,-2,0" />
+
+                </ComboBox>
+                <ComboBox Grid.Column="1" Name="cbo_concepto" Margin="23,15,28,75" SelectedValuePath="Tag" Height="34" Grid.Row="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}">
+                                        <Binding Path="Descripcion"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button   Content="Cargar" Height="25" HorizontalAlignment="Stretch" Name="btn_cargar" Click="btn_cargar_Click"  Grid.ColumnSpan="2" Margin="117,61,110,38" Grid.Row="1"/>
+
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Detalles cargados" Canvas.Top="341" Height="232" Width="764" Canvas.Left="10">
+            <DataGrid x:Name="dgDetalles" Margin="0,0,0,-1" Width="1126">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Eliminar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Eliminar" x:Name="btn_eliminar" Click="btn_eliminar_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+              
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+
+    </Canvas>
+</Window>
